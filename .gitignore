@@ -1,0 +1,23 @@
+# Arduino / CLI build
+build/
+*.hex
+*.elf
+*.eep
+*.bin
+*.map
+*.lst
+
+# IDE / OS
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary / local
+*.tmp
+*.bak
+*.swp
+*~
+.arduinoIDE/
