@@ -368,6 +368,10 @@ static inline void escreverSaidaPorta(uint8_t mascara, bool altoLogico, bool inv
  * Mapeamento PORTA (Arduino Mega pinos 26-29):
  *   bit4 (PA4) → pin26 = Sinal Hall/Fônica
  *   bit5 (PA5) → pin27 = Sinal de Fase
+ *
+ * Importante: ao fim da volta fônica, reinicia _cP no mesmo tick e já gera
+ * o 1º flanco. O reset “vazio” (_cP=0 sem XOR) alongava a falha em 1 passo
+ * e parecia um corte irregular no osciloscópio.
  */
 void InterruptTimer1() {
   const uint8_t MASK_FONICA = (1 << 4);
@@ -378,13 +382,27 @@ void InterruptTimer1() {
 
   // --- Geração do Sinal Hall / Fônica ---
   if (_hall) {
-    if (cP == 2)      PORTA ^= MASK_FONICA;
-    else if (cP > 2)  _cP = 0;
+    // Meio-ciclo a cada 2 ISR; reinicia sem passo morto
+    if (cP >= 2) {
+      PORTA ^= MASK_FONICA;
+      _cP = 0;
+    }
   } else if (_fonica || _fonica1) {
-    if (cP <= _pulso)       PORTA ^= MASK_FONICA;
-    else if (cP <= _falha)  escreverSaidaPorta(MASK_FONICA, true, inverterFonica);
-    else if (_fonica1 && cP <= _falha1) escreverSaidaPorta(MASK_FONICA, false, inverterFonica);
-    else                    _cP = 0;
+    const int limiteVolta = (_fonica1 && _falha1 > _falha) ? _falha1 : _falha;
+
+    if (cP > limiteVolta) {
+      _cP = 1;
+      cP = 1;
+    }
+
+    if (cP <= _pulso) {
+      PORTA ^= MASK_FONICA;
+    } else if (cP <= _falha) {
+      // Janela da falha (nível estável)
+      escreverSaidaPorta(MASK_FONICA, true, inverterFonica);
+    } else if (_fonica1 && cP <= _falha1) {
+      escreverSaidaPorta(MASK_FONICA, false, inverterFonica);
+    }
   }
 
   // --- Geração do Sinal de Fase ---

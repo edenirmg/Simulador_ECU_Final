@@ -4,6 +4,15 @@ Todas as alterações notáveis neste projeto estão documentadas aqui.
 
 ---
 
+## [2.8.6] — 2026-07-30
+
+### Corrigido
+- **Fônica “cortando”** — ao fim da volta o contador `_cP` era zerado num tick sem gerar flanco, alongando a falha em 1 passo; agora a volta reinicia no mesmo tick.
+- **Hall** — removido o passo morto extra entre meio-ciclos.
+- **Timer1_SetPeriod** — atualização atômica de OCR1A/TCNT para reduzir glitches ao mudar RPM.
+
+---
+
 ## [2.8.5] — 2026-07-27
 
 ### Adicionado

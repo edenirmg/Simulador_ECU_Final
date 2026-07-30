@@ -48,10 +48,16 @@ void Timer1_SetPeriod(unsigned long periodo_us) {
   if (ocr_value > 65535) {
     ocr_value = 65535;
   }
+
+  // Atualização atômica: evita OCR/TCNT inconsistentes e glitch ("corte")
+  // quando o RPM sobe e o contador já passou do novo TOP.
+  uint8_t sreg = SREG;
+  cli();
   OCR1A = (uint16_t)ocr_value;
-  if (TCNT1 > ocr_value) {
+  if (TCNT1 >= OCR1A) {
     TCNT1 = 0;
   }
+  SREG = sreg;
 }
 
 void Timer1_Stop() {
