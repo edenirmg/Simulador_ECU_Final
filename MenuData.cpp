@@ -140,6 +140,7 @@ const char txt6pl1[] PROGMEM    = "IAW 6LP1/6LPB";
 const char txtMareli8[] PROGMEM = "IAW 8P20";
 
 // --- Fiat (módulo + família motor) ---
+const char txt1g7[] PROGMEM     = "IAW 1G7/G7";
 const char txtEtorq[] PROGMEM   = "ME7.9.9 Etorq";
 const char txtFire[] PROGMEM    = "IAW 4AFB Fire";
 const char txtEvo[] PROGMEM     = "IAW 7GF Evo";
@@ -321,6 +322,7 @@ const MenuItem submenuCitroen[] PROGMEM = {
 };
 
 const MenuItem submenuFiat[] PROGMEM = {
+  MENU_ITEM(NULL, txt1g7,     &AtivaMonitorAnalogico, 84),
   MENU_ITEM(NULL, txtEtorq,   &AtivaMonitorAnalogico, 29),
   MENU_ITEM(NULL, txtFire,    &AtivaMonitorAnalogico, 30),
   MENU_ITEM(NULL, txtEvo,     &AtivaMonitorAnalogico, 31),

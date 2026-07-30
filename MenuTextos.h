@@ -118,6 +118,7 @@ extern const char txtMareli8[] PROGMEM;
 // ============================================================================
 // FIAT
 // ============================================================================
+extern const char txt1g7[] PROGMEM;
 extern const char txtEtorq[] PROGMEM;
 extern const char txtFire[] PROGMEM;
 extern const char txtEvo[] PROGMEM;

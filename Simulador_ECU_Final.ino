@@ -11,7 +11,7 @@
  *    sensores analógicos e interface de menu em display LCD 20x4 I2C.
  *
  *  Autor:  Edemir Marques Gelocha
- *  Versão: 2.8.6
+ *  Versão: 2.8.7
  *
  *  Veja CHANGELOG.md para histórico completo de alterações.
  *  Veja README.md para instruções de instalação e uso.

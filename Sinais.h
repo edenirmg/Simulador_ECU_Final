@@ -32,7 +32,7 @@ extern const SinalConfig sinais[] PROGMEM;
 extern const BaseConfig baseSinais[] PROGMEM;
 
 /** Número total de sinais disponíveis na tabela */
-#define NUM_SINAIS  83
+#define NUM_SINAIS  84
 
 // ============================================================================
 // VARIÁVEIS GLOBAIS DE ESTADO DO SINAL

@@ -155,7 +155,11 @@ const SinalConfig sinais[] PROGMEM = {
   { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0 },               // 80: MWM EDC7C1 4cil
   { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0 },               // 81: MWM EDC7C1 6cil
   { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0 },               // 82: MWM EDC7 UC31 EuroV
-  { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0 }                // 83: MAN/VW EDC7 C32
+  { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0 },               // 83: MAN/VW EDC7 C32
+
+  // === Fiat suplementar (índice 84) ===
+  // IAW 1G7/G7 — 60-2; fase 1 dente (Palio/Uno/Siena Marelli)
+  { 5, 1, 12, 240, 0, 0, 0, 0, 0, 0 }             // 84: IAW 1G7/G7
 };
 
 // ============================================================================

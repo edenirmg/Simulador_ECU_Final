@@ -4,6 +4,13 @@ Todas as alterações notáveis neste projeto estão documentadas aqui.
 
 ---
 
+## [2.8.7] — 2026-07-30
+
+### Adicionado
+- **Fiat IAW 1G7/G7** no menu gasolina (sinal 84, 60-2 + fase 1 dente).
+
+---
+
 ## [2.8.6] — 2026-07-30
 
 ### Corrigido
